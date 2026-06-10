@@ -79,7 +79,7 @@ window.addEventListener('DOMContentLoaded', () => {
 // FETCH DATA
 async function fetchData() {
     try {
-        const response = await fetch('data/theologians.json');
+        const response = await fetch('data/theologians.json?v=' + new Date().getTime());
         if (!response.ok) {
             throw new Error('데이터 파일을 불러오는 데 실패했습니다.');
         }
