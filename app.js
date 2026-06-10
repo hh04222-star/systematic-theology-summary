@@ -537,24 +537,31 @@ function closeCompareModal() {
 // HIDE/SHOW STICKY CONTROL PANEL ON SCROLL
 let lastScrollY = window.scrollY;
 const controlPanel = document.querySelector('.control-panel');
+const btnToggleControl = document.getElementById('btn-toggle-control');
 
 window.addEventListener('scroll', () => {
     const currentScrollY = window.scrollY;
     
     // Prevent iOS bounce scroll from triggering negative jumps
     if (currentScrollY <= 0) {
+        // At the absolute top -> Show control panel, hide toggle button
         controlPanel.classList.remove('hidden');
+        btnToggleControl.classList.remove('visible');
         return;
     }
     
     // Check scroll direction and threshold (scrolled past the header logo area)
     if (currentScrollY > lastScrollY && currentScrollY > 180) {
-        // Scrolling down -> Hide
+        // Scrolling down -> Hide control panel, show toggle button
         controlPanel.classList.add('hidden');
-    } else if (currentScrollY < lastScrollY) {
-        // Scrolling up -> Show
-        controlPanel.classList.remove('hidden');
+        btnToggleControl.classList.add('visible');
     }
     
     lastScrollY = currentScrollY;
+});
+
+// Click floating button to open control panel
+btnToggleControl.addEventListener('click', () => {
+    controlPanel.classList.remove('hidden');
+    btnToggleControl.classList.remove('visible');
 });

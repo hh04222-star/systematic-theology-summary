@@ -1141,3 +1141,43 @@ body {
         grid-template-columns: 1fr;
     }
 }
+
+/* --- FLOATING TOGGLE BUTTON --- */
+.btn-toggle-control {
+    position: fixed;
+    top: -60px; /* Hidden above viewport by default */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 200;
+    background: rgba(15, 23, 42, 0.85);
+    border: 1px solid var(--border-color-hover);
+    border-radius: 20px;
+    padding: 10px 20px;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    font-weight: 600;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    transition: top 0.3s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s, border-color 0.2s, box-shadow 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-toggle-control:hover {
+    background: var(--accent-blue);
+    border-color: var(--accent-blue);
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+    color: #ffffff;
+}
+
+.btn-toggle-control.visible {
+    top: 20px; /* Slide down into view */
+}
+
+@media (max-width: 768px) {
+    .btn-toggle-control.visible {
+        top: 10px;
+    }
+}
