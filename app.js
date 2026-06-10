@@ -185,7 +185,14 @@ function setupEventListeners() {
 function applyFiltersAndRender() {
     state.filteredTheologians = state.theologians.filter(t => {
         // 1. Era Filtering
-        const matchesEra = state.activeEra === 'all' || t.era === state.activeEra;
+        let matchesEra = false;
+        if (state.activeEra === 'all') {
+            matchesEra = true;
+        } else if (state.activeEra === 'philosophers') {
+            matchesEra = t.is_theologian === false;
+        } else {
+            matchesEra = t.era === state.activeEra;
+        }
         
         // 2. Search Query Filtering
         let matchesSearch = true;
@@ -218,7 +225,8 @@ function applyFiltersAndRender() {
 
 // RENDER DASHBOARD GRID
 function renderGrid() {
-    resultsCount.textContent = `검색 결과: ${state.filteredTheologians.length}명의 신학자`;
+    const countText = state.activeEra === 'philosophers' ? `${state.filteredTheologians.length}명의 철학자/사상가` : `${state.filteredTheologians.length}명의 신학자`;
+    resultsCount.textContent = `검색 결과: ${countText}`;
 
     if (state.filteredTheologians.length === 0) {
         theologiansGrid.innerHTML = `
@@ -234,7 +242,8 @@ function renderGrid() {
 
     theologiansGrid.innerHTML = state.filteredTheologians.map(t => {
         const isChecked = state.selectedForCompare.some(selected => selected.id === t.id);
-        const cardColor = eraColorMap[t.era] || 'var(--accent-blue)';
+        const cardColor = t.is_theologian === false ? 'var(--color-philosopher)' : (eraColorMap[t.era] || 'var(--accent-blue)');
+        const isPhilosopherClass = t.is_theologian === false ? ' is-philosopher' : '';
         
         // Determine whether to display general summary or locus detail
         let bodyContentHtml = '';
@@ -255,13 +264,16 @@ function renderGrid() {
         const tagsHtml = t.key_themes.slice(0, 3).map(tag => `<span class="tag">#${tag}</span>`).join('');
 
         return `
-            <div class="theologian-card" data-id="${t.id}" style="--card-color: ${cardColor}">
+            <div class="theologian-card${isPhilosopherClass}" data-id="${t.id}" style="--card-color: ${cardColor}">
                 <div class="card-header">
                     <div class="card-title-group">
                         <h3>${t.name_ko}</h3>
                         <p>${t.name_en}</p>
                     </div>
-                    <span class="era-badge">${t.era_ko}</span>
+                    <div>
+                        <span class="era-badge">${t.era_ko}</span>
+                        ${t.is_theologian === false ? '<span class="era-badge philosopher-badge">철학자/사상가 🧠</span>' : ''}
+                    </div>
                 </div>
                 
                 <div class="card-meta">
@@ -383,11 +395,16 @@ function openDetailModal(id) {
     const t = state.theologians.find(item => item.id === id);
     if (!t) return;
 
-    const cardColor = eraColorMap[t.era] || 'var(--accent-blue)';
+    const cardColor = t.is_theologian === false ? 'var(--color-philosopher)' : (eraColorMap[t.era] || 'var(--accent-blue)');
     detailModal.style.setProperty('--card-color', cardColor);
 
     // Populate elements
-    document.getElementById('modal-era').textContent = t.era_ko;
+    const modalEraEl = document.getElementById('modal-era');
+    modalEraEl.textContent = t.era_ko;
+    if (t.is_theologian === false) {
+        modalEraEl.innerHTML = `${t.era_ko} <span class="era-badge philosopher-badge" style="margin-left:6px; vertical-align:middle;">철학자/사상가 🧠</span>`;
+    }
+    
     document.getElementById('modal-title-ko').textContent = t.name_ko;
     document.getElementById('modal-title-en').textContent = t.name_en;
     document.getElementById('modal-years').textContent = `📅 활동 시기: ${t.years}`;
@@ -428,7 +445,8 @@ function openDetailModal(id) {
             
             return mapped.map(item => {
                 if (item.target) {
-                    return `<span class="influence-tag clickable" data-target-id="${item.target.id}" title="${item.target.name_ko}의 상세 프로필 보기">${item.name}</span>`;
+                    const isPhilosopherClass = item.target.is_theologian === false ? ' is-philosopher' : '';
+                    return `<span class="influence-tag clickable${isPhilosopherClass}" data-target-id="${item.target.id}" title="${item.target.name_ko}의 상세 프로필 보기">${item.name}</span>`;
                 } else {
                     return `<span class="influence-tag">${item.name}</span>`;
                 }
@@ -512,13 +530,17 @@ function openComparisonModal() {
     const t2 = state.selectedForCompare[1];
 
     // Headers
-    document.getElementById('comp-era-1').textContent = t1.era_ko;
-    document.getElementById('comp-era-1').style.color = eraColorMap[t1.era];
+    const t1EraColor = t1.is_theologian === false ? 'var(--color-philosopher)' : eraColorMap[t1.era];
+    const t1EraLabel = t1.is_theologian === false ? `${t1.era_ko} (철학자/사상가)` : t1.era_ko;
+    document.getElementById('comp-era-1').textContent = t1EraLabel;
+    document.getElementById('comp-era-1').style.color = t1EraColor;
     document.getElementById('comp-name-1').textContent = t1.name_ko;
     document.getElementById('comp-dates-1').textContent = t1.years;
 
-    document.getElementById('comp-era-2').textContent = t2.era_ko;
-    document.getElementById('comp-era-2').style.color = eraColorMap[t2.era];
+    const t2EraColor = t2.is_theologian === false ? 'var(--color-philosopher)' : eraColorMap[t2.era];
+    const t2EraLabel = t2.is_theologian === false ? `${t2.era_ko} (철학자/사상가)` : t2.era_ko;
+    document.getElementById('comp-era-2').textContent = t2EraLabel;
+    document.getElementById('comp-era-2').style.color = t2EraColor;
     document.getElementById('comp-name-2').textContent = t2.name_ko;
     document.getElementById('comp-dates-2').textContent = t2.years;
 

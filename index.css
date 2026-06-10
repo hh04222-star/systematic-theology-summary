@@ -22,6 +22,9 @@
     --color-scholasticism: #3b82f6;   /* Indigo */
     --color-modern: #10b981;         /* Emerald */
     --color-contemporary: #f59e0b;   /* Amber */
+    --color-philosopher: #b45309;    /* Antique Bronze/Ochre */
+    --color-philosopher-glow: rgba(180, 83, 9, 0.15);
+    --color-philosopher-text: #fdba74;
 
     /* Typography */
     --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
@@ -289,6 +292,7 @@ body {
 .filter-btn[data-era="scholasticism"].active { background-color: var(--color-scholasticism); border-color: var(--color-scholasticism); box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3); }
 .filter-btn[data-era="modern"].active { background-color: var(--color-modern); border-color: var(--color-modern); box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3); }
 .filter-btn[data-era="contemporary"].active { background-color: var(--color-contemporary); border-color: var(--color-contemporary); box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3); }
+.filter-btn[data-era="philosophers"].active { background-color: var(--color-philosopher); border-color: var(--color-philosopher); box-shadow: 0 4px 12px rgba(180, 83, 9, 0.3); }
 
 /* --- COMPARE BAR --- */
 .compare-bar {
@@ -1134,6 +1138,32 @@ body {
     border-color: var(--accent-blue);
     color: #ffffff;
     box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+/* Philosopher specific tags & badges */
+.era-badge.philosopher-badge {
+    background: var(--color-philosopher-glow);
+    color: var(--color-philosopher-text);
+    border: 1px solid rgba(180, 83, 9, 0.3);
+    margin-left: 6px;
+}
+
+.influence-tag.is-philosopher {
+    border-color: var(--color-philosopher);
+    color: var(--color-philosopher-text);
+}
+
+.influence-tag.clickable.is-philosopher {
+    background: var(--color-philosopher-glow);
+    border-color: var(--color-philosopher);
+    color: var(--color-philosopher-text);
+}
+
+.influence-tag.clickable.is-philosopher:hover {
+    background: var(--color-philosopher);
+    border-color: var(--color-philosopher);
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(180, 83, 9, 0.4);
 }
 
 @media (max-width: 600px) {

@@ -43,7 +43,8 @@
       "오리게네스",
       "아우구스티누스",
       "알렉산드리아의 클레멘스"
-    ]
+    ],
+    "is_theologian": false
   },
   {
     "id": "clement_alexandria",
@@ -90,7 +91,8 @@
     "influenced_them": [
       "오리게네스",
       "카파도기아 교부들"
-    ]
+    ],
+    "is_theologian": true
   },
   {
     "id": "origen",
@@ -143,7 +145,8 @@
       "아타나시우스",
       "아우구스티누스",
       "카파도기아 교부들"
-    ]
+    ],
+    "is_theologian": true
   },
   {
     "id": "alexander_alexandria",
@@ -183,7 +186,8 @@
     ],
     "influenced_them": [
       "아타나시우스"
-    ]
+    ],
+    "is_theologian": true
   },
   {
     "id": "athanasius",
@@ -230,7 +234,8 @@
     "influenced_them": [
       "아우구스티누스",
       "나지안주스의 그레고리우스"
-    ]
+    ],
+    "is_theologian": true
   },
   {
     "id": "gregory_nazianzus",
@@ -276,7 +281,8 @@
     ],
     "influenced_them": [
       "다마스쿠스의 요한"
-    ]
+    ],
+    "is_theologian": true
   },
   {
     "id": "ambrose_milan",
@@ -318,7 +324,8 @@
     ],
     "influenced_them": [
       "아우구스티누스"
-    ]
+    ],
+    "is_theologian": true
   },
   {
     "id": "augustine",
@@ -378,7 +385,8 @@
       "헤르만 바빙크",
       "칼 바르트",
       "폴 틸리히"
-    ]
+    ],
+    "is_theologian": true
   },
   {
     "id": "john_damascus",
@@ -430,7 +438,8 @@
     "influenced_them": [
       "토마스 아퀴나스",
       "동방 정교회 신학 전반"
-    ]
+    ],
+    "is_theologian": true
   },
   {
     "id": "anselm",
@@ -481,7 +490,8 @@
     "influenced_them": [
       "토마스 아퀴나스",
       "존 둔스 스코투스"
-    ]
+    ],
+    "is_theologian": true
   },
   {
     "id": "aquinas",
@@ -537,7 +547,8 @@
       "헤르만 바빙크 (방법론)",
       "Karl Rahner (초대 가톨릭 신학)",
       "가톨릭 신론 전반"
-    ]
+    ],
+    "is_theologian": true
   },
   {
     "id": "duns_scotus",
@@ -587,7 +598,8 @@
     ],
     "influenced_them": [
       "윌리엄 오캄 (비판적 계승)"
-    ]
+    ],
+    "is_theologian": true
   },
   {
     "id": "ockham",
@@ -636,7 +648,8 @@
     ],
     "influenced_them": [
       "마르틴 루터 (유명론적/실재론적 배경)"
-    ]
+    ],
+    "is_theologian": true
   },
   {
     "id": "staupitz",
@@ -676,7 +689,8 @@
     ],
     "influenced_them": [
       "마르틴 루터"
-    ]
+    ],
+    "is_theologian": true
   },
   {
     "id": "erasmus",
@@ -721,7 +735,8 @@
     "influenced_them": [
       "울리히 츠빙글리",
       "야코부스 아르미니우스"
-    ]
+    ],
+    "is_theologian": true
   },
   {
     "id": "luther",
@@ -779,7 +794,8 @@
       "칼 바르트",
       "디트리히 본회퍼",
       "위르겐 몰트만"
-    ]
+    ],
+    "is_theologian": true
   },
   {
     "id": "zwingli",
@@ -826,7 +842,8 @@
     "influenced_them": [
       "장 칼뱅",
       "개혁교회 전통"
-    ]
+    ],
+    "is_theologian": true
   },
   {
     "id": "calvin",
@@ -882,7 +899,8 @@
       "야코부스 아르미니우스 (비판적 계승)",
       "헤르만 바빙크",
       "칼 바르트"
-    ]
+    ],
+    "is_theologian": true
   },
   {
     "id": "beza",
@@ -925,7 +943,8 @@
       "야코부스 아르미니우스",
       "프란시스 투레틴",
       "존 오웬"
-    ]
+    ],
+    "is_theologian": true
   },
   {
     "id": "arminius",
@@ -972,7 +991,8 @@
     "influenced_them": [
       "복음주의 및 감리교 전통",
       "존 웨슬리"
-    ]
+    ],
+    "is_theologian": true
   },
   {
     "id": "owen",
@@ -1021,7 +1041,8 @@
     "influenced_them": [
       "청교도 신학 전반",
       "조나단 에드워즈"
-    ]
+    ],
+    "is_theologian": true
   },
   {
     "id": "turretin",
@@ -1068,7 +1089,8 @@
       "B. B. 워필드",
       "보수적 개혁주의 전통",
       "찰스 하지"
-    ]
+    ],
+    "is_theologian": true
   },
   {
     "id": "jonathan_edwards",
@@ -1116,7 +1138,8 @@
     "influenced_them": [
       "미국 뉴잉글랜드 신학",
       "복음주의 부흥 신학"
-    ]
+    ],
+    "is_theologian": true
   },
   {
     "id": "john_wesley",
@@ -1165,7 +1188,8 @@
       "감리교 신학",
       "오순절 및 성결 운동",
       "구세군"
-    ]
+    ],
+    "is_theologian": true
   },
   {
     "id": "kant",
@@ -1210,7 +1234,8 @@
     "influenced_them": [
       "알브레히트 리첼",
       "프리드리히 슐라이어마허"
-    ]
+    ],
+    "is_theologian": false
   },
   {
     "id": "schleiermacher",
@@ -1257,7 +1282,8 @@
     "influenced_them": [
       "알브레히트 리첼",
       "자유주의 기독교 신학 전반"
-    ]
+    ],
+    "is_theologian": true
   },
   {
     "id": "hegel",
@@ -1304,7 +1330,8 @@
     "influenced_them": [
       "볼프하르트 판넨베르크",
       "칼 마르크스"
-    ]
+    ],
+    "is_theologian": false
   },
   {
     "id": "schelling",
@@ -1345,7 +1372,8 @@
     ],
     "influenced_them": [
       "폴 틸리히"
-    ]
+    ],
+    "is_theologian": false
   },
   {
     "id": "charles_hodge",
@@ -1394,7 +1422,8 @@
       "B. B. 워필드",
       "보수적 장로교 신학",
       "미국 근본주의 신학"
-    ]
+    ],
+    "is_theologian": true
   },
   {
     "id": "kierkegaard",
@@ -1440,7 +1469,8 @@
       "칼 바르트",
       "폴 틸리히",
       "루돌프 불트만"
-    ]
+    ],
+    "is_theologian": false
   },
   {
     "id": "marx",
@@ -1488,7 +1518,8 @@
       "서남동",
       "구스타보 구티에레스",
       "강원돈"
-    ]
+    ],
+    "is_theologian": false
   },
   {
     "id": "ritschl",
@@ -1535,7 +1566,8 @@
     "influenced_them": [
       "사회복음주의 (Social Gospel)",
       "아돌프 폰 하르낙"
-    ]
+    ],
+    "is_theologian": true
   },
   {
     "id": "warfield",
@@ -1581,7 +1613,8 @@
     ],
     "influenced_them": [
       "보수적 장로교 신학"
-    ]
+    ],
+    "is_theologian": true
   },
   {
     "id": "harnack",
@@ -1622,7 +1655,8 @@
     ],
     "influenced_them": [
       "디트리히 본회퍼"
-    ]
+    ],
+    "is_theologian": true
   },
   {
     "id": "bavinck",
@@ -1672,7 +1706,8 @@
       "코넬리우스 반틸",
       "루이스 벌코프",
       "현대 신칼뱅주의 학풍"
-    ]
+    ],
+    "is_theologian": true
   },
   {
     "id": "whitehead",
@@ -1718,7 +1753,8 @@
     "influenced_them": [
       "존 콥",
       "김희헌"
-    ]
+    ],
+    "is_theologian": false
   },
   {
     "id": "berkhof",
@@ -1760,7 +1796,8 @@
     ],
     "influenced_them": [
       "보수적 개혁주의 전통"
-    ]
+    ],
+    "is_theologian": true
   },
   {
     "id": "buber",
@@ -1800,7 +1837,8 @@
     "influenced_them": [
       "에밀 브루너",
       "칼 바르트"
-    ]
+    ],
+    "is_theologian": false
   },
   {
     "id": "rudolf_bultmann",
@@ -1847,7 +1885,8 @@
     "influenced_them": [
       "안병무",
       "현대 성서해석학"
-    ]
+    ],
+    "is_theologian": true
   },
   {
     "id": "bloch",
@@ -1889,7 +1928,8 @@
     ],
     "influenced_them": [
       "위르겐 몰트만"
-    ]
+    ],
+    "is_theologian": false
   },
   {
     "id": "barth",
@@ -1942,7 +1982,8 @@
       "위르겐 몰트만",
       "볼프하르트 판넨베르크",
       "제임스 콘"
-    ]
+    ],
+    "is_theologian": true
   },
   {
     "id": "tillich",
@@ -1991,7 +2032,8 @@
     "influenced_them": [
       "현대 기독교 윤리학 및 종교철학",
       "제임스 콘"
-    ]
+    ],
+    "is_theologian": true
   },
   {
     "id": "heidegger",
@@ -2038,7 +2080,8 @@
       "루돌프 불트만",
       "폴 틸리히",
       "칼 라너"
-    ]
+    ],
+    "is_theologian": false
   },
   {
     "id": "brunner",
@@ -2085,7 +2128,8 @@
     ],
     "influenced_them": [
       "신정통주의 기독론 및 선교학"
-    ]
+    ],
+    "is_theologian": true
   },
   {
     "id": "reinhold_niebuhr",
@@ -2134,7 +2178,8 @@
       "김용복",
       "현영학",
       "마틴 루터 킹 주니어"
-    ]
+    ],
+    "is_theologian": true
   },
   {
     "id": "van_til",
@@ -2175,7 +2220,8 @@
     ],
     "influenced_them": [
       "보수적 장로교 신학"
-    ]
+    ],
+    "is_theologian": true
   },
   {
     "id": "rahner",
@@ -2222,7 +2268,8 @@
     ],
     "influenced_them": [
       "제2차 바티칸 공의회 개혁 신학자들"
-    ]
+    ],
+    "is_theologian": true
   },
   {
     "id": "bonhoeffer",
@@ -2272,7 +2319,8 @@
       "현대 공공신학 (Public Theology)",
       "전후 기독교 윤리학",
       "안병무"
-    ]
+    ],
+    "is_theologian": true
   },
   {
     "id": "suh_namdong",
@@ -2325,7 +2373,8 @@
       "김용복",
       "권진관",
       "정경일"
-    ]
+    ],
+    "is_theologian": true
   },
   {
     "id": "hyun_younghak",
@@ -2374,7 +2423,8 @@
     "influenced_them": [
       "한국 기독교 미학",
       "민족문화 운동"
-    ]
+    ],
+    "is_theologian": true
   },
   {
     "id": "ahn_byungmu",
@@ -2428,7 +2478,8 @@
       "권진관",
       "김희헌",
       "정경일"
-    ]
+    ],
+    "is_theologian": true
   },
   {
     "id": "malcolm_x",
@@ -2466,7 +2517,8 @@
     "influenced_by": [],
     "influenced_them": [
       "제임스 콘"
-    ]
+    ],
+    "is_theologian": false
   },
   {
     "id": "john_cobb",
@@ -2512,7 +2564,8 @@
     ],
     "influenced_them": [
       "김희헌"
-    ]
+    ],
+    "is_theologian": true
   },
   {
     "id": "foucault",
@@ -2551,7 +2604,8 @@
     "influenced_by": [],
     "influenced_them": [
       "김진호"
-    ]
+    ],
+    "is_theologian": false
   },
   {
     "id": "moltmann",
@@ -2602,7 +2656,8 @@
       "현대 생태신학 (Eco-theology)",
       "서남동",
       "강원돈"
-    ]
+    ],
+    "is_theologian": true
   },
   {
     "id": "gustavo_gutierrez",
@@ -2649,7 +2704,8 @@
     "influenced_them": [
       "서남동",
       "아시아 및 제3세계 해방신학"
-    ]
+    ],
+    "is_theologian": true
   },
   {
     "id": "pannenberg",
@@ -2697,7 +2753,8 @@
     "influenced_them": [
       "역사신학적 방법론",
       "신학과 과학 대화 학풍"
-    ]
+    ],
+    "is_theologian": true
   },
   {
     "id": "mlk",
@@ -2739,7 +2796,8 @@
     ],
     "influenced_them": [
       "제임스 콘"
-    ]
+    ],
+    "is_theologian": true
   },
   {
     "id": "rosemary_ruether",
@@ -2786,7 +2844,8 @@
     "influenced_them": [
       "최순양",
       "여성-교회 운동"
-    ]
+    ],
+    "is_theologian": true
   },
   {
     "id": "kim_yongbok",
@@ -2836,7 +2895,8 @@
       "권진관",
       "아시아 에큐메니칼 신학",
       "한국 기독교 평화 운동"
-    ]
+    ],
+    "is_theologian": true
   },
   {
     "id": "cone",
@@ -2882,7 +2942,8 @@
       "흑인 신학",
       "해방신학",
       "우머니스트 신학 (Womanist Theology)"
-    ]
+    ],
+    "is_theologian": true
   },
   {
     "id": "paul_knitter",
@@ -2928,7 +2989,8 @@
     ],
     "influenced_them": [
       "정경일"
-    ]
+    ],
+    "is_theologian": true
   },
   {
     "id": "zizek",
@@ -2970,7 +3032,8 @@
     ],
     "influenced_them": [
       "김진호"
-    ]
+    ],
+    "is_theologian": false
   },
   {
     "id": "kwon_jinkwan",
@@ -3019,7 +3082,8 @@
     "influenced_them": [
       "에큐메니칼 목회자들",
       "한국 민중조직신학 연구"
-    ]
+    ],
+    "is_theologian": true
   },
   {
     "id": "kang_wondon",
@@ -3068,7 +3132,8 @@
     "influenced_them": [
       "민중교회 연대 노동 운동",
       "기독교 생태 운동"
-    ]
+    ],
+    "is_theologian": true
   },
   {
     "id": "kim_jinho",
@@ -3117,7 +3182,8 @@
     "influenced_them": [
       "3세대 민중신학 연구자들",
       "한국 기독교 소수자 연대운동"
-    ]
+    ],
+    "is_theologian": true
   },
   {
     "id": "kim_heeheon",
@@ -3166,7 +3232,8 @@
     "influenced_them": [
       "한신대 소장 조직신학 연구자들",
       "생태 에큐메니칼 실천 운동"
-    ]
+    ],
+    "is_theologian": true
   },
   {
     "id": "chung_kyungil",
@@ -3216,7 +3283,8 @@
     "influenced_them": [
       "기독교 평화 연대",
       "새길 공동체 및 청년 신학 모임"
-    ]
+    ],
+    "is_theologian": true
   },
   {
     "id": "choi_soonyang",
@@ -3265,6 +3333,7 @@
     "influenced_them": [
       "신진 여성 신학 서클",
       "한국 에큐메니칼 여성 연대"
-    ]
+    ],
+    "is_theologian": true
   }
 ]
