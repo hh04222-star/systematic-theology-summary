@@ -533,3 +533,28 @@ function closeCompareModal() {
     compareModal.classList.remove('active');
     document.body.style.overflow = '';
 }
+
+// HIDE/SHOW STICKY CONTROL PANEL ON SCROLL
+let lastScrollY = window.scrollY;
+const controlPanel = document.querySelector('.control-panel');
+
+window.addEventListener('scroll', () => {
+    const currentScrollY = window.scrollY;
+    
+    // Prevent iOS bounce scroll from triggering negative jumps
+    if (currentScrollY <= 0) {
+        controlPanel.classList.remove('hidden');
+        return;
+    }
+    
+    // Check scroll direction and threshold (scrolled past the header logo area)
+    if (currentScrollY > lastScrollY && currentScrollY > 180) {
+        // Scrolling down -> Hide
+        controlPanel.classList.add('hidden');
+    } else if (currentScrollY < lastScrollY) {
+        // Scrolling up -> Show
+        controlPanel.classList.remove('hidden');
+    }
+    
+    lastScrollY = currentScrollY;
+});
