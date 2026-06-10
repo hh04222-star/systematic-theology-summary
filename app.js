@@ -534,34 +534,36 @@ function closeCompareModal() {
     document.body.style.overflow = '';
 }
 
-// HIDE/SHOW STICKY CONTROL PANEL ON SCROLL
+// HIDE/SHOW STICKY CONTROL PANEL ON SCROLL & MANUAL TOGGLE
 let lastScrollY = window.scrollY;
 const controlPanel = document.querySelector('.control-panel');
 const btnToggleControl = document.getElementById('btn-toggle-control');
 
+function toggleControlPanel(show) {
+    if (show) {
+        controlPanel.classList.remove('hidden');
+        btnToggleControl.innerHTML = '▲ 검색 및 필터 접기';
+    } else {
+        controlPanel.classList.add('hidden');
+        btnToggleControl.innerHTML = '🔍 검색 및 필터 열기';
+    }
+}
+
 window.addEventListener('scroll', () => {
     const currentScrollY = window.scrollY;
     
-    // Prevent iOS bounce scroll from triggering negative jumps
-    if (currentScrollY <= 0) {
-        // At the absolute top -> Show control panel, hide toggle button
-        controlPanel.classList.remove('hidden');
-        btnToggleControl.classList.remove('visible');
-        return;
-    }
-    
-    // Check scroll direction and threshold (scrolled past the header logo area)
+    // Automatically hide control panel only when scrolling down past a threshold
     if (currentScrollY > lastScrollY && currentScrollY > 180) {
-        // Scrolling down -> Hide control panel, show toggle button
-        controlPanel.classList.add('hidden');
-        btnToggleControl.classList.add('visible');
+        if (!controlPanel.classList.contains('hidden')) {
+            toggleControlPanel(false);
+        }
     }
     
     lastScrollY = currentScrollY;
 });
 
-// Click floating button to open control panel
+// Toggle button click handler
 btnToggleControl.addEventListener('click', () => {
-    controlPanel.classList.remove('hidden');
-    btnToggleControl.classList.remove('visible');
+    const isHidden = controlPanel.classList.contains('hidden');
+    toggleControlPanel(isHidden);
 });

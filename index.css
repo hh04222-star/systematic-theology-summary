@@ -171,12 +171,12 @@ body {
     top: 20px;
     z-index: 100;
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
-    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     transform: translateY(0);
 }
 
 .control-panel.hidden {
-    transform: translateY(-120%);
+    transform: translateY(calc(-100% - 12px));
 }
 
 /* Search Bar */
@@ -1144,8 +1144,8 @@ body {
 
 /* --- FLOATING TOGGLE BUTTON --- */
 .btn-toggle-control {
-    position: fixed;
-    top: -60px; /* Hidden above viewport by default */
+    position: absolute;
+    top: calc(100% + 12px);
     left: 50%;
     transform: translateX(-50%);
     z-index: 200;
@@ -1159,10 +1159,11 @@ body {
     backdrop-filter: blur(12px);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
     cursor: pointer;
-    transition: top 0.3s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s, border-color 0.2s, box-shadow 0.2s;
+    transition: background-color 0.2s, border-color 0.2s, box-shadow 0.2s;
     display: flex;
     align-items: center;
     gap: 8px;
+    white-space: nowrap;
 }
 
 .btn-toggle-control:hover {
@@ -1170,14 +1171,4 @@ body {
     border-color: var(--accent-blue);
     box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
     color: #ffffff;
-}
-
-.btn-toggle-control.visible {
-    top: 20px; /* Slide down into view */
-}
-
-@media (max-width: 768px) {
-    .btn-toggle-control.visible {
-        top: 10px;
-    }
 }
