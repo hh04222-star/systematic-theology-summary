@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>조직신학자 아카이브 | Systematic Theology Archive</title>
+    <!-- Google Fonts: Inter & Noto Serif KR for classical theological styling -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Serif+KR:wght@300;400;700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <!-- Background glow elements for premium aesthetics -->
+    <div class="glow-bg">
+        <div class="glow-sphere glow-1"></div>
+        <div class="glow-sphere glow-2"></div>
+        <div class="glow-sphere glow-3"></div>
+    </div>
+
+    <div class="app-container">
+        <!-- Header Section -->
+        <header class="app-header">
+            <div class="header-logo">
+                <span class="logo-icon">📖</span>
+                <div class="logo-text">
+                    <h1>SYSTEMATIC THEOLOGY</h1>
+                    <p>조직신학자 디지털 아카이브</p>
+                </div>
+            </div>
+            <div class="header-desc">
+                초대 교부부터 현대 신학자까지, 기독교 2천 년 역사 속 주요 조직신학자들의 신학 체계를 탐색하고 상호 비교하는 인터랙티브 공간입니다.
+            </div>
+        </header>
+
+        <!-- Main Controls Panel (Sticky) -->
+        <section class="control-panel">
+            <div class="search-bar-container">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="search-input" placeholder="신학자 이름, 키워드(예: 칭의, 삼위일체), 활동지역 검색..." autocomplete="off">
+                <button id="clear-search" class="btn-clear" style="display: none;">&times;</button>
+            </div>
+            
+            <div class="filter-group">
+                <div class="filter-section">
+                    <span class="filter-label">역사적 시대</span>
+                    <div class="filter-buttons" id="era-filters">
+                        <button class="filter-btn active" data-era="all">전체</button>
+                        <button class="filter-btn" data-era="patristic">초대 교부</button>
+                        <button class="filter-btn" data-era="medieval">중세 신학</button>
+                        <button class="filter-btn" data-era="reformation">종교개혁</button>
+                        <button class="filter-btn" data-era="scholasticism">개혁주의 정통주의</button>
+                        <button class="filter-btn" data-era="modern">근대 신학</button>
+                        <button class="filter-btn" data-era="contemporary">현대 신학</button>
+                    </div>
+                </div>
+                
+                <div class="filter-section">
+                    <span class="filter-label">강조할 신학 주제 (Locus)</span>
+                    <div class="locus-selector" id="locus-filters">
+                        <button class="locus-btn active" data-locus="summary">개요 보기</button>
+                        <button class="locus-btn" data-locus="theology_proper">신론</button>
+                        <button class="locus-btn" data-locus="christology">기독론</button>
+                        <button class="locus-btn" data-locus="soteriology">구원론</button>
+                        <button class="locus-btn" data-locus="ecclesiology_sacraments">교회/성례론</button>
+                        <button class="locus-btn" data-locus="eschatology">종말론</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Compare Mode Status -->
+            <div class="compare-bar" id="compare-bar">
+                <div class="compare-info">
+                    <span class="compare-badge">비교 모드 활성화됨</span>
+                    <span id="compare-status-text">비교할 신학자를 2명 선택해 주세요 (0/2 선택됨)</span>
+                </div>
+                <div class="compare-actions">
+                    <button id="btn-compare-trigger" class="btn btn-primary" disabled>두 신학자 비교하기</button>
+                    <button id="btn-compare-reset" class="btn btn-secondary">선택 해제</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats and Quick View Summary -->
+        <div class="dashboard-meta">
+            <div id="results-count" class="results-count">검색 결과: 0명의 신학자</div>
+            <div class="quick-tips">💡 각 카드의 하단 체크박스를 눌러 최대 2명의 신학자를 선택한 후 비교할 수 있습니다.</div>
+        </div>
+
+        <!-- Main Dashboard Grid -->
+        <main class="dashboard-grid" id="theologians-grid">
+            <!-- Dynamic Cards will be injected here via JavaScript -->
+            <div class="loading-state">
+                <div class="spinner"></div>
+                <p>아카이브 데이터를 로드하는 중입니다...</p>
+            </div>
+        </main>
+    </div>
+
+    <!-- Theologian Detail Modal -->
+    <div class="modal" id="detail-modal">
+        <div class="modal-backdrop" id="modal-backdrop"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="modal-close">&times;</button>
+            <div class="modal-header-section">
+                <div class="modal-era-badge" id="modal-era">초대 교부</div>
+                <h2 id="modal-title-ko">아우구스티누스</h2>
+                <h3 id="modal-title-en">Augustine of Hippo</h3>
+                <div class="modal-meta-row">
+                    <span id="modal-years">📅 354 ~ 430 AD</span>
+                    <span id="modal-region">📍 북아프리카 히포</span>
+                </div>
+            </div>
+            
+            <div class="modal-body-section">
+                <div class="modal-section-card">
+                    <h4>📝 신학 요약</h4>
+                    <p id="modal-summary" class="serif-text"></p>
+                </div>
+
+                <div class="modal-section-card" id="modal-influence-card">
+                    <h4>⛓️ 신학적 계보 및 영향 관계</h4>
+                    <div class="influence-container">
+                        <div class="influence-block">
+                            <span class="influence-label">◀ 영향을 받은 인물 (사상적 스승)</span>
+                            <div id="modal-influenced-by" class="influence-list"></div>
+                        </div>
+                        <div class="influence-block">
+                            <span class="influence-label">▶ 영향을 미친 인물 (후대 영향)</span>
+                            <div id="modal-influenced-them" class="influence-list"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-section-card">
+                    <h4>📚 주요 저작</h4>
+                    <ul id="modal-works" class="works-list"></ul>
+                </div>
+
+                <div class="modal-section-card" id="modal-concepts-card">
+                    <h4>🔑 주요 신학 개념 해설</h4>
+                    <div id="modal-concepts" class="concepts-list"></div>
+                </div>
+
+                <div class="modal-section-card">
+                    <h4>💬 대표 명언</h4>
+                    <blockquote id="modal-quote" class="serif-quote"></blockquote>
+                </div>
+
+                <div class="modal-section-card">
+                    <h4>🔍 교의학 주제별 핵심 견해</h4>
+                    <div class="loci-table-container">
+                        <table class="loci-table">
+                            <thead>
+                                <tr>
+                                    <th>교의학 주제 (Locus)</th>
+                                    <th>상세 사상 내용</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="locus-title">신론 (Theology Proper)</td>
+                                    <td id="modal-locus-proper"></td>
+                                </tr>
+                                <tr>
+                                    <td class="locus-title">기독론 (Christology)</td>
+                                    <td id="modal-locus-christology"></td>
+                                </tr>
+                                <tr>
+                                    <td class="locus-title">구원론 (Soteriology)</td>
+                                    <td id="modal-locus-soteriology"></td>
+                                </tr>
+                                <tr>
+                                    <td class="locus-title">교회/성례론 (Ecclesiology)</td>
+                                    <td id="modal-locus-ecclesiology"></td>
+                                </tr>
+                                <tr>
+                                    <td class="locus-title">종말론 (Eschatology)</td>
+                                    <td id="modal-locus-eschatology"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="modal-section-card">
+                    <h4>🏛️ 역사적 영향 및 평가</h4>
+                    <p id="modal-impact"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Comparison Modal -->
+    <div class="modal" id="compare-modal">
+        <div class="modal-backdrop" id="compare-backdrop"></div>
+        <div class="modal-content compare-modal-content">
+            <button class="modal-close" id="compare-close">&times;</button>
+            <div class="compare-header">
+                <h2>신학 사상 비교 대시보드</h2>
+                <p>선택하신 두 거장의 핵심 신학 체계를 한눈에 비교해 봅니다.</p>
+            </div>
+            
+            <div class="compare-grid">
+                <!-- Column Header 1 -->
+                <div class="compare-col-header" id="compare-col1-header">
+                    <div class="compare-era" id="comp-era-1">종교개혁</div>
+                    <h3 id="comp-name-1">장 칼뱅</h3>
+                    <span id="comp-dates-1">1509 ~ 1564</span>
+                </div>
+                
+                <!-- Center Divider / Categories -->
+                <div class="compare-category-header">주요 비교 범주</div>
+                
+                <!-- Column Header 2 -->
+                <div class="compare-col-header" id="compare-col2-header">
+                    <div class="compare-era" id="comp-era-2">종교개혁</div>
+                    <h3 id="comp-name-2">야코부스 아르미니우스</h3>
+                    <span id="comp-dates-2">1560 ~ 1609</span>
+                </div>
+
+                <!-- Row 1: Summary -->
+                <div class="compare-cell cell-1" id="comp-summary-1"></div>
+                <div class="compare-label">신학적 지향 요약</div>
+                <div class="compare-cell cell-2" id="comp-summary-2"></div>
+
+                <!-- Row 2: Theology Proper -->
+                <div class="compare-cell cell-1" id="comp-proper-1"></div>
+                <div class="compare-label">신론 (God)</div>
+                <div class="compare-cell cell-2" id="comp-proper-2"></div>
+
+                <!-- Row 3: Christology -->
+                <div class="compare-cell cell-1" id="comp-christ-1"></div>
+                <div class="compare-label">기독론 (Christ)</div>
+                <div class="compare-cell cell-2" id="comp-christ-2"></div>
+
+                <!-- Row 4: Soteriology -->
+                <div class="compare-cell cell-1" id="comp-soter-1"></div>
+                <div class="compare-label">구원론 (Salvation)</div>
+                <div class="compare-cell cell-2" id="comp-soter-2"></div>
+
+                <!-- Row 5: Ecclesiology -->
+                <div class="compare-cell cell-1" id="comp-ecc-1"></div>
+                <div class="compare-label">교회 / 성례론 (Church)</div>
+                <div class="compare-cell cell-2" id="comp-ecc-2"></div>
+
+                <!-- Row 6: Eschatology -->
+                <div class="compare-cell cell-1" id="comp-esch-1"></div>
+                <div class="compare-label">종말론 (Last Things)</div>
+                <div class="compare-cell cell-2" id="comp-esch-2"></div>
+
+                <!-- Row 7: Core Keywords -->
+                <div class="compare-cell cell-1" id="comp-tags-1"></div>
+                <div class="compare-label">핵심 키워드</div>
+                <div class="compare-cell cell-2" id="comp-tags-2"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Injection -->
+    <script src="app.js"></script>
+</body>
+</html>
