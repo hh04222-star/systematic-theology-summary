@@ -84,6 +84,25 @@ async function fetchData() {
             throw new Error('데이터 파일을 불러오는 데 실패했습니다.');
         }
         state.theologians = await response.json();
+        
+        // Chronological sorting helper
+        const parseBirthYear = (yearsStr) => {
+            const clean = yearsStr.replace(/\s+/g, '').toUpperCase();
+            if (clean.includes('BC')) {
+                const m = clean.match(/BC(\d+)/);
+                return m ? -parseInt(m[1]) : -9999;
+            }
+            const m = clean.match(/(\d+)/);
+            return m ? parseInt(m[1]) : 9999;
+        };
+        
+        state.theologians.sort((a, b) => {
+            const ya = parseBirthYear(a.years);
+            const yb = parseBirthYear(b.years);
+            if (ya !== yb) return ya - yb;
+            return a.name_ko.localeCompare(b.name_ko);
+        });
+
         applyFiltersAndRender();
     } catch (error) {
         console.error('Error fetching theologians:', error);
@@ -383,14 +402,35 @@ function openDetailModal(id) {
     if ((t.influenced_by && t.influenced_by.length > 0) || (t.influenced_them && t.influenced_them.length > 0)) {
         influenceCard.style.display = 'block';
         
+        const parseBirthYear = (yearsStr) => {
+            const clean = yearsStr.replace(/\s+/g, '').toUpperCase();
+            if (clean.includes('BC')) {
+                const m = clean.match(/BC(\d+)/);
+                return m ? -parseInt(m[1]) : -9999;
+            }
+            const m = clean.match(/(\d+)/);
+            return m ? parseInt(m[1]) : 9999;
+        };
+
         const renderTags = (namesArray) => {
             if (!namesArray || namesArray.length === 0) return '';
-            return namesArray.map(name => {
+            
+            const mapped = namesArray.map(name => {
                 const target = findTheologianByName(name);
-                if (target) {
-                    return `<span class="influence-tag clickable" data-target-id="${target.id}" title="${target.name_ko}의 상세 프로필 보기">${name}</span>`;
+                return {
+                    name: name,
+                    target: target,
+                    year: target ? parseBirthYear(target.years) : 99999
+                };
+            });
+            
+            mapped.sort((a, b) => a.year - b.year);
+            
+            return mapped.map(item => {
+                if (item.target) {
+                    return `<span class="influence-tag clickable" data-target-id="${item.target.id}" title="${item.target.name_ko}의 상세 프로필 보기">${item.name}</span>`;
                 } else {
-                    return `<span class="influence-tag">${name}</span>`;
+                    return `<span class="influence-tag">${item.name}</span>`;
                 }
             }).join('');
         };
